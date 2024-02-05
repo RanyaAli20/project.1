@@ -1,4 +1,5 @@
 <?php
+include'classuser.php';
 if (isset($_POST['submit'])) {
   $db = new mysqli('localhost', 'root', '', 'test');
 
