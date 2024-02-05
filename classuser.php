@@ -1,3 +1,51 @@
+<?php
+
+class User {
+  public $db;
+  public $firstName;
+  public $lastName;
+  public $email;
+  public $phoneNumber;
+  public $address;
+  
+  public function __construct($db) {
+    $this->db = $db;
+  }
+  
+  public function register($firstName, $lastName, $email, $phoneNumber, $address, $password) {
+    $query = "INSERT INTO user (first_name, last_name, email, phon_number, placeaddress, password ) VALUES ('$firstName', '$lastName', '$email', '$phoneNumber', '$address', '$password')";
+    $result = $this->db->query($query);
+    
+    if ($result) {
+      echo "تم تسجيل المستخدم بنجاح.";
+    } else {
+      echo "حدث خطأ أثناء تسجيل المستخدم.";
+    }
+  }
+}
+
+if (isset($_POST['submit'])) {
+  $db = new mysqli('localhost', 'root', '', 'test');
+
+  if ($db->connect_error) {
+    die("فشل الاتصال بقاعدة البيانات: " . $db->connect_error);
+  }
+
+  $user = new User($db);
+
+  $firstName = $_POST['firstname'];
+  $lastName = $_POST['lastname'];
+  $email = $_POST['email'];
+  $phoneNumber = $_POST['phonnumber'];
+  $address = $_POST['placeaddress'];
+  $password = $_POST['password'];
+
+  $user->register($firstName, $lastName, $email, $phoneNumber, $address, $password);
+
+  $db->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -43,51 +91,3 @@
   </body>
 </html>
 
-<?php
-
-class User {
-  private $db;
-  private $id;
-  private $firstName;
-  private $lastName;
-  private $email;
-  private $phoneNumber;
-  private $address;
-  
-  public function __construct($db) {
-    $this->db = $db;
-  }
-  
-  public function register($firstName, $lastName, $email, $phoneNumber, $address, $password) {
-    $query = "INSERT INTO user (first_name, last_name, email, phon_number, placeaddress, password ) VALUES ('$firstName', '$lastName', '$email', '$phoneNumber', '$address', '$password')";
-    $result = $this->db->query($query);
-    
-    if ($result) {
-      echo "تم تسجيل المستخدم بنجاح.";
-    } else {
-      echo "حدث خطأ أثناء تسجيل المستخدم.";
-    }
-  }
-}
-
-if (isset($_POST['submit'])) {
-  $db = new mysqli('localhost', 'root', '', 'test');
-
-  if ($db->connect_error) {
-    die("فشل الاتصال بقاعدة البيانات: " . $db->connect_error);
-  }
-
-  $user = new User($db);
-
-  $firstName = $_POST['firstname'];
-  $lastName = $_POST['lastname'];
-  $email = $_POST['email'];
-  $phoneNumber = $_POST['phonnumber'];
-  $address = $_POST['placeaddress'];
-  $password = $_POST['password'];
-
-  $user->register($firstName, $lastName, $email, $phoneNumber, $address, $password);
-
-  $db->close();
-}
-?>
