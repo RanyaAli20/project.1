@@ -3,59 +3,6 @@
   <head>
     <meta charset="utf-8">
     <title>Registration</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f1f1f1;
-        margin: 0;
-        padding: 50px;
-      }
-      
-      h2 {
-        text-align: center;
-      }
-      
-      form {
-        max-width: 400px;
-        margin: 0 auto;
-        background-color: #ffffff;
-        padding: 50px;
-        border-radius: 5px;
-      }
-      
-      label {
-        display: block;
-        margin-bottom: 5px;
-      }
-      input, select {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 10px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-      }
-      button[type="submit"] {
-        background-color: #b61018;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-      }
-      button[type="submit"]:hover {
-        background-color: #8c0e14;
-      }
-      a {
-        display: block;
-        text-align: center;
-        margin-top: 20px;
-        color: #999999;
-      }
-      a:hover {
-        color: #666666;
-      }
-    </style>
   </head>
   <body>
    <h2>Registration</h2>
